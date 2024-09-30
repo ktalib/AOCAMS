@@ -1,0 +1,265 @@
+.imaga{
+	margin-left: 100px;
+	width: 650px;
+	
+}
+
+.trackin{
+	width: 400px;
+	margin-left: 800px;
+	margin-top: -200px;
+	
+}
+.container{
+	display: inline-block;
+}
+.pi{
+	margin-right: 70px;
+}
+.formcon{
+	width: 50%;
+	margin-top: 200px;
+	margin-left: 300px;
+	margin-top: 70px;
+}
+
+.formconb{
+	width: 400px;
+	margin-top: -500px;
+	margin-left: 200px;
+	height: 300px;
+
+}
+
+.staffy{
+	width: 700px;
+	margin-top: -180px;
+	margin-left: 600px;
+	
+
+}
+.sideimg{
+	margin-right: 500px;
+	margin-left: 850px;
+	margin-top: -400px;
+
+
+}
+.sideimg2{
+	margin-right: 500px;
+	margin-left: 850px;
+	margin-top: -1200px;
+
+}
+
+.workarea{
+	width: 800px;
+	margin-left: 300px;
+	/*display: inline-block;*/
+	margin-top: -490px;
+}
+
+.side-nav{
+	width: 200px;
+	height: 500px;
+	background-color: lightblue;
+	/*display: inline-block;*/
+	margin-top: -120px;
+	
+}
+
+.side-nav a{
+	text-decoration: none;
+	color: white;
+	font-size: 25px;
+	border-bottom: 1px solid black;
+}
+li:hover{background-color: blue;}
+
+	
+}
+
+.staff-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: green;
+}
+
+.staff-nav li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+.staff-nav li a:hover {
+  background-color: #555;
+  color: white;
+}
+
+.staff-nav ul{
+	border-bottom: 1px solid black;
+}
+.box{
+	display: inline-block;
+}
+
+li{
+	list-style-type: none;
+}
+
+.work{
+	margin-top: -400px;
+	margin-left: 300px;
+}
+
+.rows{
+	display: block;
+	width: 1000px;
+	height: 100px;
+	margin-left: 250px;
+	margin-top: -500px;
+
+	
+}
+
+.dataclass{
+	width: 1200px;
+	margin-left: 210px;
+	margin-top: -500px;
+}
+
+#dataclass2{
+	width: 150px;
+	margin-left: 410px;
+	margin-top: -1010px;
+	display: inline-block;
+
+}
+
+#dataclass3{
+	width: 150px;
+	margin-left: 10px;
+	margin-top: -1010px;
+	
+
+}
+
+.groupcon{
+	display: inline-block;
+
+}
+
+.navvy{
+	/*display: inline-block;*/
+	width:50px;
+}
+
+.navvs{
+	margin-left: 180px;
+	margin-top: -23px;
+	
+
+}
+
+.naz{
+	margin-left: 360px;
+	margin-top: -24px;
+	
+
+}
+
+.viewtab {
+	margin-left: 500px;
+	width: 50%;
+	margin-top: -650px;
+	/*display: inline-block;*/
+}
+
+.viewtab2 {
+	margin-right: 200px;
+	width: 400px;
+	margin-top: 50px;
+	display: inline-block;
+	background-color: grey;
+}
+
+.eid{
+	width: 600px;
+	height: 300px;
+	margin-left: 300px;
+	margin-top: 300px;
+	background-image: url(../images/uses.jpg);
+	border-radius: 10px;
+	margin-top: 40px;
+
+}
+
+.hh1{
+	font-weight: bold;
+	color: green;
+
+}
+.hh2{
+	color: green;
+}
+.hh3{
+	margin-left: 450px;
+	display: inline-block;
+	background-color: transparent;
+
+
+}
+
+.hh4{
+	margin-right: -50px;
+	margin-top: -130px;
+	
+}
+
+.hh10{
+	display: inline-block;
+}
+.hh11{
+	margin-left: 200px;
+	display: inline-block;
+}
+
+.printing{
+	text-align: center;
+}
+
+.posting{
+	margin-left: -300px;
+	
+}
+.final{
+	width: 60%;
+	margin-left: 250px;
+	margin-top: 100px;
+}
+
+span{
+	color:white;
+	font-weight: bold;
+	text-align: center;
+}
+.nava{
+	background-color: green;
+}
+
+.containerz{
+	margin-left: 120px;
+}
+
+.sub1{
+	margin-left: 650px;
+	margin-top: -30px;
+}
+
+.containerz2{
+	margin-left: 5px;
+}
