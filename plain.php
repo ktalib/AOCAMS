@@ -1,5 +1,6 @@
 <?php include "conn.php";
-
+//off error reporting
+error_reporting(0);
 if (isset($_POST['malloc'])) {
 	$lecname=$_POST['lecname'];
 	$id=$_POST['id'];
@@ -34,14 +35,13 @@ if (isset($_POST['assign'])) {
 							   		WHERE id_c='$id'"); 
    $finish = mysqli_query($conn,$sql);
         }
-if ($finish){
-  
+  if ($finish){
+
    echo ("<script LANGUAGE='JavaScript'>
      window.alert('Allocation Successful');
      window.location.href='dashboard.php';
      </script>");
-}
-
+  }
 
 ?>
 
