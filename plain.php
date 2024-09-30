@@ -1,50 +1,87 @@
-<?php include "conn.php";
-//off error reporting
+<?php
+include "conn.php";
+// Turn off error reporting for production, but consider enabling it for debugging
 error_reporting(0);
+
+// Manual allocation
 if (isset($_POST['malloc'])) {
-	$lecname=$_POST['lecname'];
-	$id=$_POST['id'];
+    $lecname = $_POST['lecname'];
+    $id = $_POST['id'];
 
+    $sql = "UPDATE course SET lecturer = ? WHERE id_c = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ss", $lecname, $id);
+    $finish = $stmt->execute();
 
+    if ($finish) {
+        echo "<script>
+            alert('Manual Allocation Successful');
+            window.location.href='dashboard.php';
+        </script>";
+    } else {
+        echo "<script>
+            alert('Manual Allocation Failed: " . $stmt->error . "');
+        </script>";
+    }
+    $stmt->close();
+}
 
-	 mysqli_query($conn, "UPDATE course SET 
-							    lecturer = '$lecname'
-							   		WHERE id_c='$id'"); 
-   $finish = mysqli_query($conn,$sql);
-if ($finish){
-  
-   echo ("<script LANGUAGE='JavaScript'>
-     window.alert('Allocation Successful');
-     window.location.href='dashboard.php';
-     </script>");
-}}
-
+// Auto allocation
 if (isset($_POST['assign'])) {
-	
-	$id=$_POST['idd'];
-	$scid=$_POST['scid'];
+    $id = $_POST['idd'];
+    $scid = $_POST['scid'];
 
-	$sql="select* from staff where area1='$scid' order by rand()";
-		$result=mysqli_query($conn,$sql);
-			while ($row=$result->fetch_assoc()) {
-				$autolec=$row['title']." ".$row['fname']." ".$row['lname'];
-			}
-
-			 mysqli_query($conn, "UPDATE course SET 
-							 lecturer = '$autolec'
-							   		WHERE id_c='$id'"); 
-   $finish = mysqli_query($conn,$sql);
+    // First, check if there are any staff members in the specified area
+    $check_sql = "SELECT COUNT(*) as count FROM staff WHERE area1 = ?";
+    $check_stmt = $conn->prepare($check_sql);
+    $check_stmt->bind_param("s", $scid);
+    $check_stmt->execute();
+    $result = $check_stmt->get_result();
+    $row = $result->fetch_assoc();
+    
+    if ($row['count'] > 0) {
+        // If staff members exist, proceed with random selection
+        $sql = "SELECT title, fname, lname FROM staff WHERE area1 = ? ORDER BY RAND() LIMIT 1";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $scid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($row = $result->fetch_assoc()) {
+            $autolec = $row['title'] . " " . $row['fname'] . " " . $row['lname'];
+            
+            $update_sql = "UPDATE course SET lecturer = ? WHERE id_c = ?";
+            $update_stmt = $conn->prepare($update_sql);
+            $update_stmt->bind_param("ss", $autolec, $id);
+            $finish = $update_stmt->execute();
+            
+            if ($finish) {
+                echo "<script>
+                    alert('Auto Allocation Successful');
+                    window.location.href='dashboard.php';
+                </script>";
+            } else {
+                echo "<script>
+                    alert('Auto Allocation Failed: " . $update_stmt->error . "');
+                </script>";
+            }
+            $update_stmt->close();
+        } else {
+            echo "<script>
+                alert('No staff member found for the specified area.');
+            </script>";
         }
-  if ($finish){
+        $stmt->close();
+    } else {
+        echo "<script>
+            alert('No staff members available in the specified area.');
+        </script>";
+    }
+    $check_stmt->close();
+}
 
-   echo ("<script LANGUAGE='JavaScript'>
-     window.alert('Allocation Successful');
-     window.location.href='dashboard.php';
-     </script>");
-  }
-
+// ... (rest of your HTML and PHP code for displaying the table)
 ?>
-
 <div class="card-datatable table-responsive" style=" width:1000px">
                         <table class="datatables-demo table table-striped table-bordered" style=" width:100%">
                             
